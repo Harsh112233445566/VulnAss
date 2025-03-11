@@ -1,0 +1,264 @@
+Nmap scan report for 65.61.137.117
+Host is up (0.28s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE  SERVICE
+80/tcp   open   http
+| http-dombased-xss: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=65.61.137.117
+|   Found the following indications of potential DOM based XSS: 
+|     
+|     Source: window.open('disclaimer.htm?url=http://www.microsoft.com', '_blank', 'status=no,location=no,menubar=no,resizable=no,scrollbars=no,toolbar=no,width=450,height=200')
+|     Pages: http://65.61.137.117:80/index.jsp?content=inside_contact.htm
+|     
+|     Source: window.open('disclaimer.htm?url=http://www.netscape.com', '_blank', 'status=no,location=no,menubar=no,resizable=no,scrollbars=no,toolbar=no,width=450,height=200')
+|_    Pages: http://65.61.137.117:80/index.jsp?content=inside_contact.htm
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+|_      http://ha.ckers.org/slowloris/
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-internal-ip-disclosure: ERROR: Script execution failed (use -d to debug)
+| http-csrf: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=65.61.137.117
+|   Found the following possible CSRF vulnerabilities: 
+|     
+|     Path: http://65.61.137.117:80/
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=personal_checking.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/login.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/login.jsp
+|     Form id: login
+|     Form action: doLogin
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=personal_loans.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=inside_about.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/search.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/status_check.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/status_check.jsp
+|     Form id: frmjsonsubmit
+|     Form action: javascript:checkSiteStatus('AltoroMutual')
+|     
+|     Path: http://65.61.137.117:80/feedback.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/feedback.jsp
+|     Form id: 
+|     Form action: sendFeedback
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=inside.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=inside_investor.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=business_cards.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=personal_cards.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=privacy.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=security.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=business_retirement.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/default.jsp?content=security.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=inside_contact.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: http://65.61.137.117:80/index.jsp?content=business_other.htm
+|     Form id: frmsearch
+|_    Form action: /search.jsp
+| http-enum: 
+|   /login.jsp: Possible admin folder
+|_  /login.jsp: Login page
+443/tcp  open   https
+| ssl-dh-params: 
+|   VULNERABLE:
+|   Diffie-Hellman Key Exchange Insufficient Group Strength
+|     State: VULNERABLE
+|       Transport Layer Security (TLS) services that use Diffie-Hellman groups
+|       of insufficient strength, especially those using one of a few commonly
+|       shared groups, may be susceptible to passive eavesdropping attacks.
+|     Check results:
+|       WEAK DH GROUP 1
+|             Cipher Suite: TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+|             Modulus Type: Safe prime
+|             Modulus Source: RFC2409/Oakley Group 2
+|             Modulus Length: 1024
+|             Generator Length: 8
+|             Public Key Length: 1024
+|     References:
+|_      https://weakdh.org
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+|_      http://ha.ckers.org/slowloris/
+| http-csrf: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=65.61.137.117
+|   Found the following possible CSRF vulnerabilities: 
+|     
+|     Path: https://65.61.137.117:443/
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=personal_deposit.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=personal_other.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=inside_about.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/survey_questions.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=privacy.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=inside.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=business_other.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=inside_press.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/status_check.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/status_check.jsp
+|     Form id: frmjsonsubmit
+|     Form action: javascript:checkSiteStatus('AltoroMutual')
+|     
+|     Path: https://65.61.137.117:443/feedback.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/feedback.jsp
+|     Form id: 
+|     Form action: sendFeedback
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=business_cards.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=inside_contact.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/search.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=personal_checking.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/default.jsp?content=security.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=business_insurance.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/index.jsp?content=inside_investor.htm
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/subscribe.jsp
+|     Form id: frmsearch
+|     Form action: /search.jsp
+|     
+|     Path: https://65.61.137.117:443/subscribe.jsp
+|     Form id: subscribe
+|_    Form action: doSubscribe
+| http-enum: 
+|   /login.jsp: Possible admin folder
+|_  /login.jsp: Login page
+| http-dombased-xss: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=65.61.137.117
+|   Found the following indications of potential DOM based XSS: 
+|     
+|     Source: window.open('disclaimer.htm?url=http://www.microsoft.com', '_blank', 'status=no,location=no,menubar=no,resizable=no,scrollbars=no,toolbar=no,width=450,height=200')
+|     Pages: https://65.61.137.117:443/index.jsp?content=inside_contact.htm
+|     
+|     Source: window.open('disclaimer.htm?url=http://www.netscape.com', '_blank', 'status=no,location=no,menubar=no,resizable=no,scrollbars=no,toolbar=no,width=450,height=200')
+|_    Pages: https://65.61.137.117:443/index.jsp?content=inside_contact.htm
+8080/tcp open   http-proxy
+|_http-internal-ip-disclosure: ERROR: Script execution failed (use -d to debug)
+| http-enum: 
+|   /login.jsp: Possible admin folder
+|_  /login.jsp: Login page
+8443/tcp closed https-alt
+
+Nmap done: 1 IP address (1 host up) scanned in 834.48 seconds
